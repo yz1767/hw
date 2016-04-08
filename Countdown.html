@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Countdown</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+body{ font-size:18px; text-align:center;}
+.time{ height:30px; padding:200px;}
+</style>
+</head>
+<body>
+    <div class="time">
+        <span id="t_d">00 D</span>
+        <span id="t_h">00 h</span>
+        <span id="t_m">00 min</span>
+        <span id="t_s">00 s</span>
+    </div>
+<script>
+   function GetRTime(){
+       var EndTime= new Date('2016/12/31 00:00:00');
+       var NowTime = new Date();
+       var t =EndTime.getTime() - NowTime.getTime();
+       var d=Math.floor(t/1000/60/60/24);
+       var h=Math.floor(t/1000/60/60%24);
+       var m=Math.floor(t/1000/60%60);
+       var s=Math.floor(t/1000%60);
+
+       document.getElementById("t_d").innerHTML = d + "D";
+       document.getElementById("t_h").innerHTML = h + "h";
+       document.getElementById("t_m").innerHTML = m + "min";
+       document.getElementById("t_s").innerHTML = s + "s";
+   }
+   setInterval(GetRTime,0);
+</script>
+</body>
+</html> 
