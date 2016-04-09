@@ -2,23 +2,75 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <title>Countdown</title>
 <style>
 *{ margin:0; padding:0; list-style:none;}
 body{ font-size:18px; text-align:center;}
-.time{ height:30px; padding:200px;}
+.time{ height:30px; padding:80px;}
+.inputtime{height:25px; padding-top:170px;}
+
 </style>
+
+
 </head>
 <body>
+   <!--  <form id="frm1" action="form_action.asp">
+       <input id = "numa", type="number">/<input id = "numb", type="number">/
+       <input id = "numc", type="number">/<input id = "numd", type="number">/
+       <input id = "nume", type="number">/<input id = "numf", type="number">
+    <input type="button" onclick="GetRTime()" value="Submit">
+    </form> -->
+
+<p id="demo" style="color:white"></p> 
+
+    <div class="inputtime">
+        <input id = "numY" type="number" min="2016" max="2116" step="1" style="font-size:18px; width:65px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >Y</span>
+        <input id = "numM" type="number" min="01" max="12" step="1" style="font-size:18px; width:42px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >M</span>
+        <input id = "numD" type="number" min="01" max="31" step="1" style="font-size:18px;width:42px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >D</span>
+        </br>
+        <input id = "numH" type="number" min="0" max="23" step="1" style="font-size:18px;width:42px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >h</span>
+        <input id = "numMin" type="number" min="0" max="59" step="1" style="font-size:18px;width:42px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >min</span>
+        <input id = "numS" type="number" min="0" max="59" style="font-size:18px;width:42px; border-top:0;border-left:0;border-right:0;border-bottom:1 solid;background:white;">
+        <span >s</span>
+        
+    </div>
+
+    <!-- <button style="position:absolute; margin-top: 40px;" onclick="GetRTime()">Submit</button> -->
+
     <div class="time">
         <span id="t_d">00 D</span>
         <span id="t_h">00 h</span>
         <span id="t_m">00 min</span>
         <span id="t_s">00 s</span>
     </div>
+
+
 <script>
-   function GetRTime(){
-       var EndTime= new Date('2016/12/31 00:00:00');
+
+function GetRTime(){
+
+var numY = document.getElementById("numY").value;
+var numM = document.getElementById("numM").value;
+var numD = document.getElementById("numD").value;
+var numH = document.getElementById("numH").value;
+var numMin = document.getElementById("numMin").value;
+var numS = document.getElementById("numS").value;
+
+
+
+var e = String(numY+'/'+numM+'/'+numD+' '+numH+':'+numMin+':'+numS);
+document.getElementById("demo").innerHTML = e;
+
+
+
+       var EndTime= new Date(e) ;
+       // var EndTime= new Date('2016/12/31 00:00:00');
        var NowTime = new Date();
        var t =EndTime.getTime() - NowTime.getTime();
        var d=Math.floor(t/1000/60/60/24);
